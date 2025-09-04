@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Widget Background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF000000" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+    
+    <!-- Widget Title: "Task List" -->
+    <item android:top="8dp" android:left="16dp" android:right="16dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FF5722" />
+            <size android:height="14dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Widget Title (longer to show it's a title) -->
+    <item android:top="26dp" android:left="16dp" android:right="16dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <size android:height="16dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Task Count (shorter to show it's count info) -->
+    <item android:top="42dp" android:left="16dp" android:right="100dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#9E9E9E" />
+            <size android:height="12dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Task 1 (full width) -->
+    <item android:top="58dp" android:left="16dp" android:right="16dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <size android:height="14dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Task 2 (medium width) -->
+    <item android:top="72dp" android:left="16dp" android:right="32dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <size android:height="14dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Task 3 (shorter width) -->
+    <item android:top="86dp" android:left="16dp" android:right="48dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <size android:height="14dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- More Tasks Indicator (shortest width) -->
+    <item android:top="100dp" android:left="16dp" android:right="64dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#9E9E9E" />
+            <size android:height="12dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+</layer-list>

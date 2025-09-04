@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark theme colors -->
+    <color name="background_dark">#0F0F0F</color>
+    <color name="background_dark_secondary">#181818</color>
+    <color name="surface_dark">#1A1A1A</color>
+    <color name="surface_dark_variant">#2A2A2A</color>
+    <color name="text_dark_primary">#FFFFFF</color>
+    <color name="text_dark_secondary">#B3B3B3</color>
+    <color name="text_dark_tertiary">#808080</color>
+    <color name="border_dark">#404040</color>
+    <color name="border_dark_focus">#606060</color>
+    
+    <!-- Button colors for dark theme -->
+    <color name="button_dark_primary">#2A2A2A</color>
+    <color name="button_dark_secondary">#404040</color>
+    <color name="button_dark_text">#FFFFFF</color>
+    <color name="button_dark_text_secondary">#B3B3B3</color>
+    
+    <!-- Card colors for dark theme -->
+    <color name="card_dark_background">#1A1A1A</color>
+    <color name="card_dark_elevated">#2A2A2A</color>
+    
+    <!-- Text selection colors for dark theme -->
+    <color name="text_selection_background_dark">#33FF0000</color>
+    
+    <!-- Override legacy colors for dark theme -->
+    <color name="background_black">#0F0F0F</color>
+    <color name="background_darker">#0A0A0A</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_gray">#B3B3B3</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="gray">#808080</color>
+    <color name="button_dark_gray">#404040</color>
+    <color name="button_text_dark">#FFFFFF</color>
+    <color name="text_selection_background">#33FF0000</color>
+</resources>

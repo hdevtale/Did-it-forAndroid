@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Widget Background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF000000" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+    
+    <!-- Widget Title: "Single Task" -->
+    <item android:top="8dp" android:left="16dp" android:right="16dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FF5722" />
+            <size android:height="14dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Task Name (longer to show it's a task name) -->
+    <item android:top="26dp" android:left="16dp" android:right="16dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <size android:height="16dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Time Since Text (shorter to show it's time info) -->
+    <item android:top="42dp" android:left="16dp" android:right="100dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#9E9E9E" />
+            <size android:height="12dp" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
+    <!-- Log Time Button (orange button) -->
+    <item android:top="62dp" android:right="48dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FF5722" />
+            <size android:width="52dp" android:height="24dp" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    
+    <!-- Open Button (orange button) -->
+    <item android:top="62dp" android:right="16dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FF5722" />
+            <size android:width="32dp" android:height="24dp" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</layer-list>

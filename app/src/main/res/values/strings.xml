@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Did-It</string>
+    <string name="hello_world">Hello World!</string>
+    
+    <!-- Main Activity Strings -->
+    <string name="ongoing_tasks">Ongoing Tasks</string>
+    <string name="completed_tasks">Completed Tasks</string>
+    <string name="tasks_in_progress">%d tasks in progress</string>
+    <string name="tasks_completed">%d tasks completed</string>
+    <string name="add_new_task">Add New Task</string>
+    <string name="enter_task_name">ENTER TASK NAME:</string>
+    <string name="add_notes_optional">ADD NOTES (OPTIONAL):</string>
+    <string name="save_task">SAVE TASK</string>
+    <string name="task_name_hint">Task name</string>
+    <string name="notes_hint">Add notes (optional)</string>
+    
+    <!-- Sample Tasks -->
+    <string name="sample_task_welcome">Welcome to Did-It!</string>
+    <string name="sample_task_welcome_notes">This is your first task. Tap the checkmark to complete it and see how tasks move to the completed section!</string>
+    <string name="sample_task_explore">Explore the app</string>
+    <string name="sample_task_explore_notes">Try adding more tasks, setting reminders, and organizing your day. Long press tasks to select multiple items.</string>
+    <string name="sample_task_reminder">Set a reminder</string>
+    <string name="sample_task_reminder_notes">Tap the bell icon to set reminders for important tasks. You\'ll get notifications at the scheduled time.</string>
+    <string name="sample_task_log">Log your progress</string>
+    <string name="sample_task_log_notes">Use the clock icon to log when you work on tasks. Track your time and stay productive!</string>
+    <string name="sample_task_widgets">Add widgets to home screen</string>
+    <string name="sample_task_widgets_notes">Long press on your home screen and add Did-It widgets to quickly log time or view tasks without opening the app.</string>
+    
+    <!-- Theme Selection -->
+    <string name="choose_theme">CHOOSE YOUR THEME</string>
+    <string name="select_preferred_appearance">Select your preferred appearance</string>
+    <string name="light_theme">LIGHT THEME</string>
+    <string name="light_theme_description">Clean white background with dark text</string>
+    <string name="dark_theme">DARK THEME</string>
+    <string name="dark_theme_description">ELEGANT DARK BACKGROUND WITH WHITE TEXT</string>
+    <string name="device_theme">DEVICE THEME</string>
+    <string name="device_theme_description">AUTOMATICALLY FOLLOWS YOUR SYSTEM SETTINGS</string>
+</resources>

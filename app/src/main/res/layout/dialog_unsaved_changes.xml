@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/background_black">
+
+    <!-- Dialog Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unsaved Changes"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        android:fontFamily="@font/ntype82"
+        android:layout_marginBottom="16dp"
+        android:gravity="center" />
+
+    <!-- Dialog Message -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You have unsaved changes. Are you sure you want to exit?"
+        android:textColor="@color/text_gray"
+        android:textSize="16sp"
+        android:fontFamily="@font/ibm_plex_mono"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp" />
+
+    <!-- Button Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="32dp">
+
+        <!-- Stay Button -->
+        <Button
+            android:id="@+id/stayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Stay"
+            style="@style/DialogButtonStyle" />
+
+        <!-- Exit Button -->
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit"
+            style="@style/DialogButtonStyle.Accent" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/dialog_background"
+    android:elevation="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ENTER TASK NAME:"
+        android:textColor="@color/text_white"
+        android:textSize="16sp"
+        android:fontFamily="@font/ntype82"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task name"
+        android:textColorHint="@color/text_gray"
+        app:boxStrokeColor="@color/accent_red"
+        app:hintTextColor="@color/accent_red"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/taskNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_white"
+            android:fontFamily="@font/ibm_plex_mono"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
+            android:textIsSelectable="true"
+            android:selectAllOnFocus="false"
+            android:scrollHorizontally="true"
+            android:scrollbars="horizontal"
+            android:fadeScrollbars="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Notes Section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD NOTES (OPTIONAL):"
+        android:textColor="@color/text_white"
+        android:textSize="16sp"
+        android:fontFamily="@font/ntype82"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Notes"
+        android:textColorHint="@color/text_gray"
+        app:boxStrokeColor="@color/accent_red"
+        app:hintTextColor="@color/accent_red"
+        app:counterEnabled="true"
+        app:counterMaxLength="200"
+        app:counterTextColor="@color/text_gray"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/taskNotesEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_white"
+            android:fontFamily="@font/ibm_plex_mono"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:minLines="2"
+            android:gravity="top|start"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Save Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveTaskButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="SAVE TASK"
+        android:textColor="@color/text_white"
+        android:fontFamily="@font/ntype82"
+        android:backgroundTint="@color/accent_red"
+        android:padding="16dp"
+        android:textSize="16sp"
+        style="@style/Widget.Material3.Button" />
+
+</LinearLayout>

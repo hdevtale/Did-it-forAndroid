@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/background_black"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Reminder"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/ntype82"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Date Selection -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/ntype82"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/selectedDateText"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_text_background"
+            android:text="Today"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/ntype82"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+
+        <ImageButton
+            android:id="@+id/datePickerButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_text_background"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/white"
+            android:contentDescription="Select Date" />
+
+    </LinearLayout>
+
+    <!-- Time Selection -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/ntype82"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <!-- Hour Spinner -->
+        <Spinner
+            android:id="@+id/hourSpinner"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_background"
+            android:popupBackground="@color/background_black"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:fontFamily="@font/ntype82"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Minute Spinner -->
+        <Spinner
+            android:id="@+id/minuteSpinner"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_background"
+            android:popupBackground="@color/background_black"
+            android:layout_marginEnd="16dp" />
+
+        <!-- AM/PM Spinner -->
+        <Spinner
+            android:id="@+id/ampmSpinner"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_background"
+            android:popupBackground="@color/background_black" />
+
+    </LinearLayout>
+
+    <!-- Simple reminder - no repeat options needed -->
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/removeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:text="Remove"
+            android:textColor="@color/accent_red"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/ntype82"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            style="@style/Widget.Material3.Button.TextButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/ntype82"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            style="@style/Widget.Material3.Button.TextButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:text="Save"
+            style="@style/Widget.DidIt.SaveButton" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp"
+    android:backgroundTint="@android:color/transparent"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="12dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorOutline">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Main Task Content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- Task Name TextView -->
+            <TextView
+                android:id="@+id/taskNameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Task Name"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:fontFamily="@font/ntype82"
+                android:textStyle="normal"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Complete project documentation" />
+
+            <!-- Notes Indicator for Completed Tasks -->
+            <ImageView
+                android:id="@+id/notesIndicator"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_note"
+                android:tint="?attr/colorOnSurfaceVariant"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Time Elapsed TextView below task name -->
+            <TextView
+                android:id="@+id/timeElapsedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="4dp"
+                android:text="2 days ago"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp"
+                android:fontFamily="@font/ntype82"
+                android:letterSpacing="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintTop_toBottomOf="@id/taskNameTextView"
+                tools:text="2 days ago" />
+
+            <!-- Reminder Details Layout -->
+            <LinearLayout
+                android:id="@+id/reminderDetailsLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintTop_toBottomOf="@id/timeElapsedTextView">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_bell"
+                    android:tint="?attr/colorOnSurfaceVariant"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/reminderTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Repeats weekly on Monday at 9:00 AM"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/ntype82"
+                    android:letterSpacing="0.01"
+                    tools:text="Repeats weekly on Monday at 9:00 AM" />
+
+            </LinearLayout>
+
+            <!-- Edit Reminder Button -->
+            <ImageButton
+                android:id="@+id/editReminderButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_bell"
+                android:tint="?attr/colorOnSurface"
+                android:contentDescription="Edit Reminder"
+                android:visibility="visible"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@id/undoButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Undo Button for Completed Tasks -->
+            <ImageButton
+                android:id="@+id/undoButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_undo"
+                android:scaleType="centerInside"
+                android:padding="12dp"
+                android:contentDescription="Undo Task Completion"
+                android:visibility="gone"
+                android:tint="?attr/colorOnSurface"
+                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <!-- "Just Did It" Button on the far right -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logTimeButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:backgroundTint="@color/accent_red"
+                app:icon="@drawable/ic_check"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:iconTint="@color/text_white"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent"
+                style="@style/Widget.Material3.Button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="Complete Task"
+                tools:ignore="ContentDescription" />
+
+            <!-- Small Circular Selection Button (replaces complete task button during selection) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/selectionButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:backgroundTint="@color/accent_red"
+                app:icon="@drawable/ic_selection_dot"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="14dp"
+                app:iconTint="@color/text_white"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent"
+                style="@style/Widget.Material3.Button"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="Select Task"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Expandable Notes Section -->
+        <LinearLayout
+            android:id="@+id/notesSectionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="?attr/colorSurface"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_gray"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <!-- Scrollable Notes Content -->
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="300dp"
+                android:fillViewport="true"
+                android:scrollbars="vertical"
+                android:fadeScrollbars="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Notes Label -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notes:"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/ntype82"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Notes EditText -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Add notes..."
+                        android:textColorHint="@color/text_gray"
+                        app:boxStrokeColor="@color/accent_red"
+                        app:hintTextColor="@color/accent_red"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/notesEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:fontFamily="@font/ibm_plex_mono"
+                            android:inputType="textMultiLine"
+                            android:minLines="3"
+                            android:maxLines="10"
+                            android:gravity="top"
+                            android:textIsSelectable="true"
+                            android:selectAllOnFocus="false"
+                            android:scrollHorizontally="false"
+                            android:scrollbars="vertical"
+                            android:fadeScrollbars="false" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Action Buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/saveNotesButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:text="Save Notes"
+                            android:textColor="@color/text_white"
+                            android:backgroundTint="@color/accent_red"
+                            style="@style/Widget.Material3.Button" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/completeTaskButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:text="Log Time"
+                            android:textColor="@color/text_white"
+                            android:backgroundTint="@color/accent_red"
+                            style="@style/Widget.Material3.Button" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
