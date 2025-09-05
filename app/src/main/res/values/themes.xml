@@ -140,29 +140,6 @@
         <item name="colorOnPrimary">@color/white</item>
     </style>
     
-    <!-- Dark theme for DatePickerDialog -->
-    <style name="ThemeOverlay.DidIt.DatePicker" parent="ThemeOverlay.Material3.Dark">
-        <item name="colorPrimary">@color/accent_red</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSurface">@color/background_black</item>
-        <item name="colorOnSurface">@color/white</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/text_dark_secondary</item>
-        <item name="android:colorBackground">@color/background_black</item>
-        <item name="android:windowBackground">@color/background_black</item>
-    </style>
-    
-    <!-- Light theme for DatePickerDialog -->
-    <style name="ThemeOverlay.DidIt.DatePicker.Light" parent="ThemeOverlay.Material3.Light">
-        <item name="colorPrimary">@color/accent_red</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSurface">@color/surface_light</item>
-        <item name="colorOnSurface">@color/text_light_primary</item>
-        <item name="android:textColorPrimary">@color/text_light_primary</item>
-        <item name="android:textColorSecondary">@color/text_light_secondary</item>
-        <item name="android:colorBackground">@color/background_light</item>
-        <item name="android:windowBackground">@color/background_light</item>
-    </style>
     
     <!-- CollapsingToolbar title styles -->
     <style name="ExpandedTitleStyle" parent="TextAppearance.Material3.HeadlineLarge">

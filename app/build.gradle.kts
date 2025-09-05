@@ -11,8 +11,8 @@ android {
         applicationId = "com.harshal.didit"
         minSdk = 26
         targetSdk = 36
-        versionCode = 10
-        versionName = "1.0.3-alpha"
+        versionCode = 13
+        versionName = "1.0.6-alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         

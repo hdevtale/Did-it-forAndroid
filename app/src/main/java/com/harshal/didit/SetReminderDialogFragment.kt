@@ -114,20 +114,8 @@ class SetReminderDialogFragment : DialogFragment() {
     }
     
     private fun showDatePicker() {
-        // Detect current theme to use appropriate DatePickerDialog theme
-        val isDarkTheme = (requireContext().resources.configuration.uiMode and 
-                          android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
-                          android.content.res.Configuration.UI_MODE_NIGHT_YES
-        
-        val datePickerTheme = if (isDarkTheme) {
-            R.style.ThemeOverlay_DidIt_DatePicker
-        } else {
-            R.style.ThemeOverlay_DidIt_DatePicker_Light
-        }
-        
         val datePickerDialog = DatePickerDialog(
             requireContext(),
-            datePickerTheme,
             { _, year, month, dayOfMonth ->
                 selectedDate.set(year, month, dayOfMonth)
                 updateDateText()
@@ -139,20 +127,6 @@ class SetReminderDialogFragment : DialogFragment() {
         
         // Set minimum date to today
         datePickerDialog.datePicker.minDate = System.currentTimeMillis()
-        
-        // Apply theme-appropriate button colors
-        datePickerDialog.setOnShowListener {
-            val positiveButton = datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
-            val negativeButton = datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
-            
-            if (isDarkTheme) {
-                positiveButton?.setTextColor(resources.getColor(R.color.white, null))
-                negativeButton?.setTextColor(resources.getColor(R.color.white, null))
-            } else {
-                positiveButton?.setTextColor(resources.getColor(R.color.text_light_primary, null))
-                negativeButton?.setTextColor(resources.getColor(R.color.text_light_primary, null))
-            }
-        }
         
         datePickerDialog.show()
     }

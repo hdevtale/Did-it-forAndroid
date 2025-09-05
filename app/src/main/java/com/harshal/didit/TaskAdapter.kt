@@ -101,7 +101,7 @@ class TaskAdapter(
             holder.itemView.animate()
                 .alpha(1f)
                 .translationY(0f)
-                .setDuration(800) // Much smoother and slower
+                .setDuration(300) // Quick and smooth
                 .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
                 .start()
         }
