@@ -9,9 +9,20 @@
 -keepattributes SourceFile,LineNumberTable
 -renamesourcefileattribute SourceFile
 
-# Keep all model classes
+# Keep all model classes - CRITICAL for data persistence
 -keep class com.harshal.didit.Task { *; }
 -keep class com.harshal.didit.TaskLog { *; }
+-keep class com.harshal.didit.TaskRepository { *; }
+
+# Keep UUID serialization for Task IDs
+-keep class java.util.UUID { *; }
+-keep class java.util.UUID$Holder { *; }
+
+# Keep all data classes and their fields
+-keepclassmembers class com.harshal.didit.Task {
+    <fields>;
+    <init>(...);
+}
 
 # Keep all widget classes
 -keep class com.harshal.didit.SimpleTaskWidget { *; }

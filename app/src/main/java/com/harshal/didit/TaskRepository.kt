@@ -3,6 +3,7 @@ package com.harshal.didit
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.util.UUID
 
 object TaskRepository {
     private const val PREF_NAME = "task_preferences"
@@ -32,16 +33,39 @@ object TaskRepository {
                 val type = object : TypeToken<List<Task>>() {}.type
                 val loadedTasks: List<Task> = gson.fromJson(tasksJson, type) ?: emptyList()
                 
+                // Migration safety: Ensure all tasks have valid data
+                val migratedTasks = loadedTasks.map { task ->
+                    // Ensure task has valid ID
+                    val validId = if (task.id.toString() == "00000000-0000-0000-0000-000000000000") {
+                        UUID.randomUUID()
+                    } else {
+                        task.id
+                    }
+                    
+                    // Ensure task has valid timestamps
+                    val validCreationTimestamp = if (task.creationTimestamp <= 0) {
+                        System.currentTimeMillis()
+                    } else {
+                        task.creationTimestamp
+                    }
+                    
+                    // Return task with validated data
+                    task.copy(
+                        id = validId,
+                        creationTimestamp = validCreationTimestamp
+                    )
+                }
+                
                 // Debug: Log what's being loaded
-                android.util.Log.d("TaskRepository", "Loaded ${loadedTasks.size} tasks:")
-                loadedTasks.forEach { task ->
+                android.util.Log.d("TaskRepository", "Loaded ${migratedTasks.size} tasks (migration applied if needed):")
+                migratedTasks.forEach { task ->
                     android.util.Log.d("TaskRepository", "  - '${task.name}': isCompleted=${task.isCompleted}, completedTimestamp=${task.completedTimestamp}")
                 }
                 
-                loadedTasks
+                migratedTasks
             } catch (e: Exception) {
                 android.util.Log.e("TaskRepository", "Error loading tasks: ${e.message}")
-                // If there's an error parsing, return empty list
+                // If there's an error parsing, return empty list to prevent crashes
                 emptyList()
             }
         } else {

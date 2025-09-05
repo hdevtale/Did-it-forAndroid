@@ -6,13 +6,12 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:layout_marginTop="12dp"
-    android:layout_marginBottom="12dp"
-    android:backgroundTint="@android:color/transparent"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     app:cardBackgroundColor="?attr/colorSurface"
-    app:cardElevation="0dp"
+    app:cardElevation="4dp"
     app:cardCornerRadius="12dp"
-    app:strokeWidth="1dp"
+    app:strokeWidth="2dp"
     app:strokeColor="?attr/colorOutline">
 
     <LinearLayout
@@ -35,7 +34,7 @@
                 android:id="@+id/taskNameTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:text="Task Name"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
@@ -43,10 +42,10 @@
                 android:textStyle="normal"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="2dp"
-                android:maxLines="2"
+                android:maxLines="3"
                 android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintEnd_toStartOf="@id/editReminderButton"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Complete project documentation" />
 
@@ -68,7 +67,7 @@
                 android:id="@+id/timeElapsedTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
                 android:text="2 days ago"
                 android:textColor="?android:attr/textColorSecondary"
@@ -76,22 +75,55 @@
                 android:fontFamily="@font/ntype82"
                 android:letterSpacing="0.01"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintEnd_toStartOf="@id/editReminderButton"
                 app:layout_constraintTop_toBottomOf="@id/taskNameTextView"
                 tools:text="2 days ago" />
+
+            <!-- Reminder Icon -->
+            <ImageView
+                android:id="@+id/reminderIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/ic_bell"
+                android:contentDescription="Reminder"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/timeElapsedTextView"
+                app:tint="?android:attr/textColorSecondary" />
+
+            <!-- Simple Reminder Line -->
+            <TextView
+                android:id="@+id/reminderTimeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="2dp"
+                android:text="Reminder at 3:30 PM"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/ntype82"
+                android:letterSpacing="0.01"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/reminderIcon"
+                app:layout_constraintEnd_toStartOf="@id/editReminderButton"
+                app:layout_constraintTop_toBottomOf="@id/timeElapsedTextView"
+                tools:text="Reminder at 3:30 PM" />
 
             <!-- Reminder Details Layout -->
             <LinearLayout
                 android:id="@+id/reminderDetailsLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/logTimeButton"
+                app:layout_constraintEnd_toStartOf="@id/editReminderButton"
                 app:layout_constraintTop_toBottomOf="@id/timeElapsedTextView">
 
                 <ImageView
@@ -118,15 +150,15 @@
             <!-- Edit Reminder Button -->
             <ImageButton
                 android:id="@+id/editReminderButton"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="12dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_bell"
                 android:tint="?attr/colorOnSurface"
                 android:contentDescription="Edit Reminder"
                 android:visibility="visible"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:layout_constraintEnd_toStartOf="@id/undoButton"
@@ -138,6 +170,7 @@
                 android:id="@+id/undoButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_undo"
                 android:scaleType="centerInside"
@@ -213,12 +246,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/text_gray"
+                android:background="?attr/colorOutline"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp" />
 
             <!-- Scrollable Notes Content -->
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/notesScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxHeight="300dp"
@@ -238,7 +272,7 @@
                         android:layout_height="wrap_content"
                         android:text="Notes:"
                         android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:fontFamily="@font/ntype82"
                         android:layout_marginBottom="8dp" />
 
@@ -246,11 +280,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Add notes..."
-                        android:textColorHint="@color/text_gray"
-                        app:boxStrokeColor="@color/accent_red"
-                        app:hintTextColor="@color/accent_red"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+                        style="@style/Widget.DidIt.TextInputLayout.Notes">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/notesEditText"
@@ -258,7 +288,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="@font/ibm_plex_mono"
-                            android:inputType="textMultiLine"
+                            android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
                             android:minLines="3"
                             android:maxLines="10"
                             android:gravity="top"
@@ -266,7 +296,11 @@
                             android:selectAllOnFocus="false"
                             android:scrollHorizontally="false"
                             android:scrollbars="vertical"
-                            android:fadeScrollbars="false" />
+                            android:fadeScrollbars="false"
+                            android:imeOptions="actionNone"
+                            android:singleLine="false"
+                            android:breakStrategy="simple"
+                            android:hyphenationFrequency="none" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -285,6 +319,8 @@
                             android:layout_marginEnd="8dp"
                             android:text="Save Notes"
                             android:textColor="@color/text_white"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/ntype82"
                             android:backgroundTint="@color/accent_red"
                             style="@style/Widget.Material3.Button" />
 
@@ -296,10 +332,19 @@
                             android:layout_marginStart="8dp"
                             android:text="Log Time"
                             android:textColor="@color/text_white"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/ntype82"
                             android:backgroundTint="@color/accent_red"
                             style="@style/Widget.Material3.Button" />
 
                     </LinearLayout>
+
+                    <!-- Dynamic Spacer for Keyboard -->
+                    <View
+                        android:id="@+id/keyboardSpacer"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent" />
 
                 </LinearLayout>
 

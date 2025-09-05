@@ -11,8 +11,8 @@ android {
         applicationId = "com.harshal.didit"
         minSdk = 26
         targetSdk = 36
-        versionCode = 6
-        versionName = "1.0.1-alpha"
+        versionCode = 10
+        versionName = "1.0.3-alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
@@ -26,6 +26,9 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
+            isJniDebuggable = false
+            isPseudoLocalesEnabled = false
+            isZipAlignEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -36,6 +39,7 @@ android {
         debug {
             isMinifyEnabled = false
             isDebuggable = true
+            isJniDebuggable = true
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }

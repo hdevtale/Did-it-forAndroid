@@ -68,6 +68,17 @@ class SimpleTaskListWidget : AppWidgetProvider() {
         views.setTextViewText(R.id.widgetTitle, "Ongoing Tasks")
         views.setTextViewText(R.id.taskCount, "${tasks.size} task${if (tasks.size != 1) "s" else ""}")
         
+        // Set up widget container click to open app
+        val openAppIntent = Intent(context, MainActivity::class.java).apply {
+            action = ACTION_OPEN_APP
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
+        val openAppPendingIntent = PendingIntent.getActivity(
+            context, appWidgetId, openAppIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        views.setOnClickPendingIntent(R.id.widgetContainer, openAppPendingIntent)
+        
         // Set individual task names (show up to 3)
         if (tasks.isNotEmpty()) {
             views.setTextViewText(R.id.task1, tasks[0].name)
@@ -100,17 +111,6 @@ class SimpleTaskListWidget : AppWidgetProvider() {
             views.setViewVisibility(R.id.task3, android.view.View.GONE)
             views.setViewVisibility(R.id.moreTasks, android.view.View.GONE)
         }
-        
-        // Set up open app button
-        val openAppIntent = Intent(context, MainActivity::class.java).apply {
-            action = ACTION_OPEN_APP
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        }
-        val openAppPendingIntent = PendingIntent.getActivity(
-            context, appWidgetId * 2, openAppIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.widgetContainer, openAppPendingIntent)
         
         appWidgetManager.updateAppWidget(appWidgetId, views)
         Log.d(TAG, "Task list widget updated successfully")

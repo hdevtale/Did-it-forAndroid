@@ -3,7 +3,8 @@
     android:initialLayout="@layout/widget_simple_task_list"
     android:minWidth="180dp"
     android:minHeight="120dp"
-    android:previewImage="@drawable/widget_task_list_preview"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
-    android:widgetCategory="home_screen" />
+    android:widgetCategory="home_screen"
+    android:previewImage="@drawable/widget_list_detailed_preview"
+    android:description="@string/widget_list_description" />

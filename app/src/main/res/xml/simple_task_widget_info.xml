@@ -3,8 +3,9 @@
     android:initialLayout="@layout/widget_simple_task"
     android:minWidth="180dp"
     android:minHeight="80dp"
-    android:previewImage="@drawable/widget_single_task_preview"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen"
-    android:configure="com.harshal.didit.SimpleTaskWidgetConfigureActivity" />
+    android:configure="com.harshal.didit.SimpleTaskWidgetConfigureActivity"
+    android:previewImage="@drawable/widget_simple_detailed_preview"
+    android:description="@string/widget_simple_description" />

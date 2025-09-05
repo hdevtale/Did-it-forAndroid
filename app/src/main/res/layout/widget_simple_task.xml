@@ -3,9 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/widget_background"
-    android:padding="16dp"
-    android:minHeight="80dp">
+    android:background="@android:color/black"
+    android:padding="16dp">
 
     <!-- Task Name -->
     <TextView
@@ -26,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Time since last logged"
-        android:textColor="#9E9E9E"
+        android:textColor="#CCCCCC"
         android:textSize="12sp"
         android:layout_marginBottom="12dp" />
 
@@ -45,7 +44,7 @@
             android:text="LOG TIME"
             android:textSize="10sp"
             android:textColor="@android:color/white"
-            android:background="@drawable/button_background"
+            android:background="@android:color/holo_red_dark"
             android:minWidth="0dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
@@ -59,7 +58,7 @@
             android:text="OPEN"
             android:textSize="10sp"
             android:textColor="@android:color/white"
-            android:background="@drawable/button_background"
+            android:background="@android:color/darker_gray"
             android:minWidth="0dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp" />

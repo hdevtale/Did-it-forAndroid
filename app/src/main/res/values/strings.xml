@@ -35,4 +35,11 @@
     <string name="dark_theme_description">ELEGANT DARK BACKGROUND WITH WHITE TEXT</string>
     <string name="device_theme">DEVICE THEME</string>
     <string name="device_theme_description">AUTOMATICALLY FOLLOWS YOUR SYSTEM SETTINGS</string>
+    
+    <!-- Widget Descriptions -->
+    <string name="widget_single_task_description">Quick access to log time for a specific task with dot matrix styling</string>
+    <string name="widget_task_list_description">View and manage your ongoing tasks with customizable size and theme</string>
+    <string name="widget_minimal_description">Minimal task widget - shows first ongoing task with log button</string>
+    <string name="widget_simple_description">Simple task widget - select a specific task to track</string>
+    <string name="widget_list_description">Task list widget - shows up to 3 ongoing tasks at once</string>
 </resources>

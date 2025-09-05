@@ -87,13 +87,18 @@ class SimpleTaskWidget : AppWidgetProvider() {
         
         val views = RemoteViews(context.packageName, R.layout.widget_simple_task)
         
-        // Set task name
-        views.setTextViewText(R.id.taskNameText, task.name)
+        // Set task name with proper truncation
+        val displayName = if (task.name.length > 30) {
+            task.name.substring(0, 27) + "..."
+        } else {
+            task.name
+        }
+        views.setTextViewText(R.id.taskNameText, displayName)
         
         // Set time since last logged
         val lastLoggedTime = task.lastLoggedTimestamp
         val timeSince = formatTimeElapsed(lastLoggedTime)
-        views.setTextViewText(R.id.timeSinceText, timeSince)
+        views.setTextViewText(R.id.timeSinceText, "Last: $timeSince")
         
         // Set up log time button
         val logTimeIntent = Intent(context, SimpleWidgetLogReceiver::class.java).apply {
@@ -185,17 +190,41 @@ class SimpleTaskWidget : AppWidgetProvider() {
     private fun formatTimeElapsed(timestamp: Long): String {
         if (timestamp == 0L) return "Never logged"
         
-        val calendar = java.util.Calendar.getInstance()
-        calendar.timeInMillis = timestamp
+        val now = System.currentTimeMillis()
+        val diff = now - timestamp
         
-        val hour = calendar.get(java.util.Calendar.HOUR)
-        val minute = calendar.get(java.util.Calendar.MINUTE)
-        val amPm = calendar.get(java.util.Calendar.AM_PM)
+        val seconds = diff / 1000
+        val minutes = seconds / 60
+        val hours = minutes / 60
+        val days = hours / 24
         
-        val amPmText = if (amPm == java.util.Calendar.AM) "AM" else "PM"
-        val hour12 = if (hour == 0) 12 else hour
-        val minuteFormatted = String.format("%02d", minute)
-        
-        return "$hour12:$minuteFormatted $amPmText"
+        return when {
+            days > 0 -> {
+                // Show date and time for events older than 24 hours
+                val calendar = java.util.Calendar.getInstance()
+                calendar.timeInMillis = timestamp
+                
+                val dayOfWeek = calendar.get(java.util.Calendar.DAY_OF_WEEK)
+                val dayOfMonth = calendar.get(java.util.Calendar.DAY_OF_MONTH)
+                val month = calendar.get(java.util.Calendar.MONTH)
+                val hour = calendar.get(java.util.Calendar.HOUR)
+                val minute = calendar.get(java.util.Calendar.MINUTE)
+                val amPm = calendar.get(java.util.Calendar.AM_PM)
+                
+                val dayNames = arrayOf("", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+                val monthNames = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                                       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+                
+                val amPmText = if (amPm == java.util.Calendar.AM) "AM" else "PM"
+                val hour12 = if (hour == 0) 12 else hour
+                val minuteFormatted = String.format("%02d", minute)
+                
+                // Format: "Mon, Jan 15 at 2:30 PM"
+                "${dayNames[dayOfWeek]}, ${monthNames[month]} $dayOfMonth at $hour12:$minuteFormatted $amPmText"
+            }
+            hours > 0 -> "${hours}h ago"
+            minutes > 0 -> "${minutes}m ago"
+            else -> "Just now"
+        }
     }
 }

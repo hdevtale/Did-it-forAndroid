@@ -39,6 +39,46 @@ class ReminderReceiver : BroadcastReceiver() {
             "Time to work on: $taskName"
         }
         
+        // Create action intents
+        val snoozeIntent = Intent(context, NotificationActionReceiver::class.java).apply {
+            action = "SNOOZE"
+            putExtra("task_id", taskId)
+            putExtra("task_name", taskName)
+            putExtra("task_notes", taskNotes)
+        }
+        val snoozePendingIntent = PendingIntent.getBroadcast(
+            context,
+            taskId.hashCode() + 1,
+            snoozeIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        
+        val logTimeIntent = Intent(context, NotificationActionReceiver::class.java).apply {
+            action = "LOG_TIME"
+            putExtra("task_id", taskId)
+            putExtra("task_name", taskName)
+            putExtra("task_notes", taskNotes)
+        }
+        val logTimePendingIntent = PendingIntent.getBroadcast(
+            context,
+            taskId.hashCode() + 2,
+            logTimeIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        
+        val markDoneIntent = Intent(context, NotificationActionReceiver::class.java).apply {
+            action = "MARK_DONE"
+            putExtra("task_id", taskId)
+            putExtra("task_name", taskName)
+            putExtra("task_notes", taskNotes)
+        }
+        val markDonePendingIntent = PendingIntent.getBroadcast(
+            context,
+            taskId.hashCode() + 3,
+            markDoneIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         val notification = NotificationCompat.Builder(context, "didit_reminders")
             .setSmallIcon(R.drawable.ic_bell)
             .setContentTitle("Did-It Reminder")
@@ -47,6 +87,9 @@ class ReminderReceiver : BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
+            .addAction(R.drawable.ic_bell, "Snooze", snoozePendingIntent)
+            .addAction(R.drawable.ic_bell, "Log Time", logTimePendingIntent)
+            .addAction(R.drawable.ic_bell, "Mark Done", markDonePendingIntent)
             .build()
         
         notificationManager.notify(taskId.hashCode(), notification)

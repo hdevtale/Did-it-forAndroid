@@ -84,6 +84,15 @@
         <item name="android:textSize">16sp</item>
     </style>
     
+    <!-- Custom TextInputLayout style for notes with red border -->
+    <style name="Widget.DidIt.TextInputLayout.Notes" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/accent_red_faint</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/accent_red</item>
+        <item name="android:textColorHint">@color/text_gray</item>
+    </style>
+    
     <!-- Custom alert dialog theme -->
     <style name="ThemeOverlay.DidIt.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/accent_red</item>
@@ -129,6 +138,30 @@
         <item name="colorOnSurface">@color/white</item>
         <item name="colorPrimary">@color/accent_red</item>
         <item name="colorOnPrimary">@color/white</item>
+    </style>
+    
+    <!-- Dark theme for DatePickerDialog -->
+    <style name="ThemeOverlay.DidIt.DatePicker" parent="ThemeOverlay.Material3.Dark">
+        <item name="colorPrimary">@color/accent_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurface">@color/background_black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/text_dark_secondary</item>
+        <item name="android:colorBackground">@color/background_black</item>
+        <item name="android:windowBackground">@color/background_black</item>
+    </style>
+    
+    <!-- Light theme for DatePickerDialog -->
+    <style name="ThemeOverlay.DidIt.DatePicker.Light" parent="ThemeOverlay.Material3.Light">
+        <item name="colorPrimary">@color/accent_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/text_light_primary</item>
+        <item name="android:textColorPrimary">@color/text_light_primary</item>
+        <item name="android:textColorSecondary">@color/text_light_secondary</item>
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="android:windowBackground">@color/background_light</item>
     </style>
     
     <!-- CollapsingToolbar title styles -->

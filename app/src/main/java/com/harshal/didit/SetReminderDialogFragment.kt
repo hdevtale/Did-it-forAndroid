@@ -49,7 +49,7 @@ class SetReminderDialogFragment : DialogFragment() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.DarkDialogTheme)
+        setStyle(STYLE_NORMAL, R.style.ThemeOverlay_DidIt_MaterialAlertDialog)
     }
     
     override fun onCreateView(
@@ -114,9 +114,20 @@ class SetReminderDialogFragment : DialogFragment() {
     }
     
     private fun showDatePicker() {
+        // Detect current theme to use appropriate DatePickerDialog theme
+        val isDarkTheme = (requireContext().resources.configuration.uiMode and 
+                          android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
+                          android.content.res.Configuration.UI_MODE_NIGHT_YES
+        
+        val datePickerTheme = if (isDarkTheme) {
+            R.style.ThemeOverlay_DidIt_DatePicker
+        } else {
+            R.style.ThemeOverlay_DidIt_DatePicker_Light
+        }
+        
         val datePickerDialog = DatePickerDialog(
             requireContext(),
-            R.style.DarkDialogTheme,
+            datePickerTheme,
             { _, year, month, dayOfMonth ->
                 selectedDate.set(year, month, dayOfMonth)
                 updateDateText()
@@ -129,10 +140,18 @@ class SetReminderDialogFragment : DialogFragment() {
         // Set minimum date to today
         datePickerDialog.datePicker.minDate = System.currentTimeMillis()
         
-        // Apply dark theme to the dialog
+        // Apply theme-appropriate button colors
         datePickerDialog.setOnShowListener {
-            datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)?.setTextColor(resources.getColor(R.color.white, null))
-            datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)?.setTextColor(resources.getColor(R.color.white, null))
+            val positiveButton = datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
+            val negativeButton = datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
+            
+            if (isDarkTheme) {
+                positiveButton?.setTextColor(resources.getColor(R.color.white, null))
+                negativeButton?.setTextColor(resources.getColor(R.color.white, null))
+            } else {
+                positiveButton?.setTextColor(resources.getColor(R.color.text_light_primary, null))
+                negativeButton?.setTextColor(resources.getColor(R.color.text_light_primary, null))
+            }
         }
         
         datePickerDialog.show()
@@ -228,6 +247,9 @@ class SetReminderDialogFragment : DialogFragment() {
         try {
             val task = this.task ?: return
             
+            // Show visual confirmation animation
+            showSaveConfirmation()
+            
             // Get time from spinners
             val hour = hourSpinner.selectedItemPosition + 1
             val minute = minuteSpinner.selectedItemPosition
@@ -263,7 +285,8 @@ class SetReminderDialogFragment : DialogFragment() {
                 android.util.Log.d("SetReminderDialog", "Saving reminder successfully")
                 try {
                     listener?.onReminderSet(task, adjustedReminderTime)
-                    dismiss()
+                    // Delay dismiss to show animation
+                    saveButton.postDelayed({ dismiss() }, 1500)
                 } catch (e: Exception) {
                     android.util.Log.e("SetReminderDialog", "Error in listener callback", e)
                 }
@@ -271,7 +294,8 @@ class SetReminderDialogFragment : DialogFragment() {
                 android.util.Log.d("SetReminderDialog", "Saving reminder successfully")
                 try {
                     listener?.onReminderSet(task, reminderTime)
-                    dismiss()
+                    // Delay dismiss to show animation
+                    saveButton.postDelayed({ dismiss() }, 1500)
                 } catch (e: Exception) {
                     android.util.Log.e("SetReminderDialog", "Error in listener callback", e)
                 }
@@ -281,9 +305,132 @@ class SetReminderDialogFragment : DialogFragment() {
         }
     }
     
+    private fun showSaveConfirmation() {
+        try {
+            val originalText = saveButton.text.toString()
+            
+            // First, scale down the button
+            saveButton.animate()
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(300) // Much smoother and slower
+                .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                .withEndAction {
+                    // Change text to "saved" and change colors to theme (red background, black text)
+                    saveButton.text = "saved"
+                    saveButton.setTextColor(android.graphics.Color.parseColor("#000000")) // Black text
+                    saveButton.setBackgroundColor(android.graphics.Color.parseColor("#FF4444")) // Red background
+                    
+                    // Scale back up with the new text
+                    saveButton.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(300) // Much smoother and slower
+                        .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                        .withEndAction {
+                            // After a delay, restore original text and color
+                            saveButton.postDelayed({
+                                saveButton.animate()
+                                    .scaleX(0.9f)
+                                    .scaleY(0.9f)
+                                    .setDuration(300) // Much smoother and slower
+                                    .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                                    .withEndAction {
+                                        // Restore original text and colors
+                                        saveButton.text = originalText
+                                        saveButton.setTextColor(android.graphics.Color.parseColor("#FFFFFF")) // White text
+                                        saveButton.setBackgroundColor(android.graphics.Color.parseColor("#FF4444")) // Red background (original)
+                                        
+                                        // Scale back to normal
+                                        saveButton.animate()
+                                            .scaleX(1.0f)
+                                            .scaleY(1.0f)
+                                            .setDuration(300) // Much smoother and slower
+                                            .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                                            .start()
+                                    }
+                                    .start()
+                            }, 1200) // Show "saved" for 1.2 seconds
+                        }
+                        .start()
+                }
+                .start()
+            
+            android.util.Log.d("SetReminderDialog", "Save confirmation animation started")
+        } catch (e: Exception) {
+            android.util.Log.e("SetReminderDialog", "Error showing save confirmation: ${e.message}")
+            e.printStackTrace()
+        }
+    }
+    
     private fun removeReminder() {
         val task = this.task ?: return
-        listener?.onReminderRemoved(task)
-        dismiss()
+        
+        // Show visual confirmation animation
+        showRemoveConfirmation()
+        
+        // Delay the actual removal to show animation
+        removeButton.postDelayed({
+            listener?.onReminderRemoved(task)
+            dismiss()
+        }, 1500)
+    }
+    
+    private fun showRemoveConfirmation() {
+        try {
+            val originalText = removeButton.text.toString()
+            
+            // First, scale down the button
+            removeButton.animate()
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(300) // Much smoother and slower
+                .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                .withEndAction {
+                    // Change text to "removed" and change colors to theme (red background, black text)
+                    removeButton.text = "removed"
+                    removeButton.setTextColor(android.graphics.Color.parseColor("#000000")) // Black text
+                    removeButton.setBackgroundColor(android.graphics.Color.parseColor("#FF4444")) // Red background
+                    
+                    // Scale back up with the new text
+                    removeButton.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(300) // Much smoother and slower
+                        .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                        .withEndAction {
+                            // After a delay, restore original text and color
+                            removeButton.postDelayed({
+                                removeButton.animate()
+                                    .scaleX(0.9f)
+                                    .scaleY(0.9f)
+                                    .setDuration(300) // Much smoother and slower
+                                    .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                                    .withEndAction {
+                                        // Restore original text and colors
+                                        removeButton.text = originalText
+                                        removeButton.setTextColor(android.graphics.Color.parseColor("#FFFFFF")) // White text
+                                        removeButton.setBackgroundColor(android.graphics.Color.parseColor("#FF4444")) // Red background (original)
+                                        
+                                        // Scale back to normal
+                                        removeButton.animate()
+                                            .scaleX(1.0f)
+                                            .scaleY(1.0f)
+                                            .setDuration(300) // Much smoother and slower
+                                            .setInterpolator(androidx.interpolator.view.animation.FastOutSlowInInterpolator())
+                                            .start()
+                                    }
+                                    .start()
+                            }, 1200) // Show "removed" for 1.2 seconds
+                        }
+                        .start()
+                }
+                .start()
+            
+            android.util.Log.d("SetReminderDialog", "Remove confirmation animation started")
+        } catch (e: Exception) {
+            android.util.Log.e("SetReminderDialog", "Error showing remove confirmation: ${e.message}")
+            e.printStackTrace()
+        }
     }
 }
