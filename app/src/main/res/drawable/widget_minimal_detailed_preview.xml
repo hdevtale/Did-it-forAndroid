@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="80dp"
+    android:viewportWidth="180"
+    android:viewportHeight="80">
+    
+    <!-- Background -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M8,0 L172,0 A8,8 0,0 1,180 8 L180,72 A8,8 0,0 1,172 80 L8,80 A8,8 0,0 1,0 72 L0,8 A8,8 0,0 1,8 0 Z" />
+    
+    <!-- Border -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#333333"
+        android:strokeWidth="1"
+        android:pathData="M8,0 L172,0 A8,8 0,0 1,180 8 L180,72 A8,8 0,0 1,172 80 L8,80 A8,8 0,0 1,0 72 L0,8 A8,8 0,0 1,8 0 Z" />
+    
+    <!-- Task name text -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M16,16 L164,16 L164,28 L16,28 Z" />
+    
+    <!-- Time text -->
+    <path
+        android:fillColor="#CCCCCC"
+        android:pathData="M16,32 L120,32 L120,40 L16,40 Z" />
+    
+    <!-- Log button -->
+    <path
+        android:fillColor="@android:color/holo_red_dark"
+        android:pathData="M16,48 L164,48 L164,64 L16,64 Z" />
+    
+    <!-- Button text -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M60,56 L100,56 L100,60 L60,60 Z" />
+</vector>

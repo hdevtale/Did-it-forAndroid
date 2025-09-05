@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    
+    <!-- Badge background -->
+    <solid android:color="#FF4444" />
+    
+    <!-- Rounded corners for pill shape -->
+    <corners android:radius="8dp" />
+    
+    <!-- Subtle border -->
+    <stroke
+        android:width="0.5dp"
+        android:color="#CC3333" />
+        
+</shape>

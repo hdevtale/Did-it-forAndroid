@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="120dp"
+    android:viewportWidth="180"
+    android:viewportHeight="120">
+    
+    <!-- Background -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M8,0 L172,0 A8,8 0,0 1,180 8 L180,112 A8,8 0,0 1,172 120 L8,120 A8,8 0,0 1,0 112 L0,8 A8,8 0,0 1,8 0 Z" />
+    
+    <!-- Border -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#333333"
+        android:strokeWidth="1"
+        android:pathData="M8,0 L172,0 A8,8 0,0 1,180 8 L180,112 A8,8 0,0 1,172 120 L8,120 A8,8 0,0 1,0 112 L0,8 A8,8 0,0 1,8 0 Z" />
+    
+    <!-- Title -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M16,12 L164,12 L164,24 L16,24 Z" />
+    
+    <!-- Task count -->
+    <path
+        android:fillColor="#CCCCCC"
+        android:pathData="M16,28 L80,28 L80,36 L16,36 Z" />
+    
+    <!-- Task 1 -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M16,44 L164,44 L164,56 L16,56 Z" />
+    
+    <!-- Task 2 -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M16,60 L164,60 L164,72 L16,72 Z" />
+    
+    <!-- Task 3 -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M16,76 L164,76 L164,88 L16,88 Z" />
+    
+    <!-- More tasks indicator -->
+    <path
+        android:fillColor="#CCCCCC"
+        android:pathData="M16,92 L100,92 L100,100 L16,100 Z" />
+</vector>
