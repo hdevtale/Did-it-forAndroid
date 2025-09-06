@@ -1,3 +1,5 @@
+![CompressJPEG Online_img(512x512)](https://github.com/user-attachments/assets/1542774e-6a68-4ad9-a6c5-99c4b8f7c434)
+
 # Did-It 📝
 
 A beautiful, intuitive task management app that helps you track what you've accomplished and when you did it. Built with modern Android development practices and optimized for high-refresh-rate displays.
@@ -183,6 +185,14 @@ If you encounter any issues or have questions:
 - Widget support
 - Reminder system
 
----
+<img width="1080" height="1920" alt="1" src="https://github.com/user-attachments/assets/52d73ab8-4a44-41a6-badb-861e80c27a7f" />
+<img width="1080" height="1920" alt="2" src="https://github.com/user-attachments/assets/f6eee234-444b-46d3-856f-7a43f92160b9" />
+![3](https://github.com/user-attachments/assets/7061aaef-5cbb-4ba0-b0b4-4c39c5ef9f40)
+<img width="1080" height="1920" alt="4" src="https://github.com/user-attachments/assets/4476fd30-de8c-42bd-920b-bec85cdb3c3e" />
+
+
+
+
+
 
 **Made with ❤️ for productivity enthusiasts**
